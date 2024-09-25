@@ -1,9 +1,11 @@
 package io.hhplus.tdd.point
 
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 
+@Tag(name = "포인트", description = "포인트 관련 API")
 @RestController
 @RequestMapping("/point")
 class PointController(
