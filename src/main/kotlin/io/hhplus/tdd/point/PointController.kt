@@ -41,7 +41,7 @@ class PointController(
         @PathVariable id: Long,
         @RequestBody amount: Long,
     ): UserPoint {
-        return pointService.chargeUserPoint(id, amount)
+        return pointService.charge(id, amount)
     }
 
     /**
@@ -52,6 +52,6 @@ class PointController(
         @PathVariable id: Long,
         @RequestBody amount: Long,
     ): UserPoint {
-        return pointService.useUserPoint(id, amount)
+        return pointService.use(id, amount)
     }
 }

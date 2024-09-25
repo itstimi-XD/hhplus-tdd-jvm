@@ -4,6 +4,9 @@ import io.hhplus.tdd.database.PointHistoryTable
 import io.hhplus.tdd.database.UserPointTable
 import org.springframework.stereotype.Service
 
+//TODO : bean test 방법
+//TODO : test api
+
 @Service
 class PointService(
     private val userPointTable: UserPointTable,
@@ -14,7 +17,7 @@ class PointService(
         return userPointTable.selectById(id)
     }
 
-    fun chargeUserPoint(id: Long, amount: Long): UserPoint {
+    fun charge(id: Long, amount: Long): UserPoint {
         val userPoint = userPointTable.selectById(id)
         val newPoint = userPoint.point + amount
         val updatedUserPoint = userPointTable.insertOrUpdate(id, newPoint)
@@ -24,7 +27,7 @@ class PointService(
         return updatedUserPoint
     }
 
-    fun useUserPoint(id: Long, amount: Long): UserPoint {
+    fun use(id: Long, amount: Long): UserPoint {
         val currentPoint = userPointTable.selectById(id)
         if (currentPoint.point < amount) {
             throw IllegalArgumentException("잔액이 부족합니다.")
