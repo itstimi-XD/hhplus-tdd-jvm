@@ -1,2 +1,15 @@
 spring:
   application.name: hhplus-tdd
+
+
+springdoc:
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    path: /point-swagger/
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+  paths-to-match: /point/**
+  api-docs:
+    path: /point-swagger/v3/api-docs
