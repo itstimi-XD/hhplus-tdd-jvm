@@ -54,6 +54,29 @@ class PointServiceTest{
 //        verify(pointHistoryTable).insert(userId, chargeAmount, TransactionType.CHARGE, updatedPoint.updateMillis)
     }
 
+//    @Test
+//    fun `포인트 적립 시도 시 최대 잔고 초과 시 예외 발생`() {
+//        // 최대 잔고 설정 (기존 잔고 + 충전할 금액이 최대 잔고를 초과하도록 설정)
+//        val maxBalance = 100_000L
+//        val initialPoint = UserPoint(id = userId, point = maxBalance - 10L, updateMillis = System.currentTimeMillis())
+//        val chargeAmount = 20L  // 충전 시도가 최대 잔고를 초과하게 만드는 금액
+//
+//        `when`(userPointTable.selectById(userId)).thenReturn(initialPoint)
+//
+//        // assertThrows를 사용해 예외가 발생하는지 확인
+//        val exception = assertThrows(IllegalArgumentException::class.java) {
+//            pointService.charge(userId, chargeAmount)
+//        }
+//
+//        // 예외 메시지가 예상되는 내용과 일치하는지 확인
+//        assertEquals("최대 잔고를 초과할 수 없습니다. 초과하고싶으면 은행을 사시던가요.", exception.message)
+//
+//        // 최대 잔고를 초과했으므로 insertOrUpdate가 호출되지 않아야 함을 검증
+//        verify(userPointTable, never()).insertOrUpdate(anyLong(), anyLong())
+//        // 포인트 이력이 기록되지 않아야 함을 검증
+//        verify(pointHistoryTable, never()).insert(anyLong(), anyLong(), any(TransactionType::class.java), anyLong())
+//    }
+
     @Test
     fun `포인트 사용 테스트`(){
         val useAmount = 30L
@@ -70,6 +93,7 @@ class PointServiceTest{
 //        // 포인트 사용 이력이 기록되었는지도 확인
 //        verify(pointHistoryTable).insert(userId, useAmount, TransactionType.USE, updatedPoint.updateMillis)
     }
+
 
     @Test
     fun `포인트 사용 시 잔액이 부족한 경우 예외 발생`(){
